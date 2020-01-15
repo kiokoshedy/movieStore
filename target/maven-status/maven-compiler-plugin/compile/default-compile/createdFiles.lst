@@ -1,0 +1,4 @@
+com\movie\moviestore\entity\Movie_.class
+com\movie\moviestore\entity\Movie.class
+com\movie\moviestore\managedbean\MovieManagedBean.class
+com\movie\moviestore\sessionbean\MovieSessionBean.class

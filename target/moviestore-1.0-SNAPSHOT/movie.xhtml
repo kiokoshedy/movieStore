@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Movies
+    </ui:define>
+
+    <ui:define name="description">
+        List of all available Movies
+    </ui:define>
+
+    <ui:define name="body">
+        <style type="text/css">
+            .ui-datatable {
+                margin-bottom: 25px
+            }
+
+            .ui-datatable .ui-datatable-header {
+                text-align: right;
+            }
+
+            .ui-button-text-only .ui-button-text {
+                padding: 0.3em 0.4em;
+            }
+
+            .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+                visibility: hidden;
+            }
+
+            .ui-filter-column .ui-column-customfilter .custom-filter {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .year-spinner input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        </style>
+        <h:form id="myform">
+
+            <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" emptyMessage="No movies found" editable="true">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Search all fields:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('mvie').filter()" style="width:200px" placeholder="Enter keyword"/>
+                        <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="pi pi-align-justify" />
+                        <p:columnToggler datasource="mvss" trigger="toggler" />
+                    </p:outputPanel>
+
+                </f:facet>
+                <p:column filterBy="#{mvs.id}" headerText="ID" ><h:outputText value="#{mvs.id}"/></p:column>
+                <p:column filterBy="#{mvs.name}" headerText="Name" ><h:outputText value="#{mvs.name}"/></p:column>
+                <p:column filterBy="#{mvs.type}" headerText="Type" ><h:outputText value="#{mvs.type}"/></p:column>
+                <p:column filterBy="#{mvs.description}" headerText="Description" ><h:outputText value="#{mvs.description}"/></p:column>
+                <p:column filterBy="#{mvs.production}" headerText="Production" ><h:outputText value="#{mvs.production}"/></p:column>
+                <p:column filterBy="#{mvs.status}" headerText="Status" ><h:outputText value="#{mvs.status}"/></p:column>
+
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
