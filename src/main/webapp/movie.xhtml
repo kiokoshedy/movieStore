@@ -11,7 +11,7 @@
     </ui:define>
 
     <ui:define name="description">
-        List of all available Movies
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
     </ui:define>
 
     <ui:define name="body">
@@ -47,9 +47,9 @@
             <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" emptyMessage="No movies found" editable="true">
                 <f:facet name="header">
                     <p:outputPanel>
-                        <h:outputText value="Search all fields:" />
+                        <h:outputText value="Search:" />
                         <p:inputText id="globalFilter" onkeyup="PF('mvie').filter()" style="width:200px" placeholder="Enter keyword"/>
-                        <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="pi pi-align-justify" />
+                        <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="fa fa-bars" />
                         <p:columnToggler datasource="mvss" trigger="toggler" />
                     </p:outputPanel>
 
@@ -62,6 +62,12 @@
                 <p:column filterBy="#{mvs.status}" headerText="Status" ><h:outputText value="#{mvs.status}"/></p:column>
 
             </p:dataTable>
+            <p:inputTextarea rows="5" cols="30" counter="display" maxlength="50" counterTemplate="{0} characters remaining." autoResize="false" />
+            
+            <br/>
+            <h:outputText id="display" />
+            <br/>
+            <p:commandButton value="Submit" style="margin-right:20px;" styleClass="ui-priority-primary" icon="fa fa-check" />
         </h:form>
     </ui:define>
 
