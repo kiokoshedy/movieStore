@@ -56,7 +56,7 @@ public class Movie implements Serializable {
     @Size(max = 20)
     @Column(name = "status")
     private String status;
-
+   
     public Movie() {
     }
 

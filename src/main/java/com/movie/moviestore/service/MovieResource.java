@@ -7,40 +7,34 @@ package com.movie.moviestore.service;
 
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.sessionbean.MovieSessionBean;
+import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
 /**
  *
  * @author DATA INTEGRATED
  */
-@Path("store")
+
+@Path("/store")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class MovieResource {
     
     @EJB
     private MovieSessionBean msb;
     
-    @EJB
-    private EntityManager em;
-    
-    
     @GET
-    @Path("list")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Movie> getAllMovies(){
+    @Path("/list")
+    public List<Movie> getMovieList(@PathParam("id") Integer id, Movie movie) {
         return msb.getAllMovies();
-                
     }
-    
-    
 }
