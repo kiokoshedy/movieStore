@@ -1,8 +1,6 @@
-com\movie\moviestore\service\MovieService.class
+org\netbeans\rest\application\config\ApplicationConfig.class
 com\movie\moviestore\sessionbean\MovieSessionBean.class
 com\movie\moviestore\service\MovieResource.class
 com\movie\moviestore\entity\Movie_.class
-com\movie\moviestore\entity\Database.class
 com\movie\moviestore\entity\Movie.class
 com\movie\moviestore\managedbean\MovieManagedBean.class
-com\movie\moviestore\service\MovieService$1.class

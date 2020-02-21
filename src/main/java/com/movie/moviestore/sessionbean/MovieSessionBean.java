@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class MovieSessionBean {
     
-    @PersistenceContext
+    @PersistenceContext(unitName = "com.movie_moviestore_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     // Add business logic below. (Right-click in editor and choose
@@ -29,8 +29,23 @@ public class MovieSessionBean {
                 .getResultList();
         return mvs;
     }
+    public Movie getById(Integer id) {
+        return em.find(Movie.class, id);
+    }
+    
+    public void updateMovie(Movie movie) {
+        em.merge(movie);
+    }
+    
+    public void addMovie (Movie movie) {
+        em.persist(movie);
+    }
+    
+    public void deleteMovie (Movie movie) {
+         if (!em.contains(movie)) {
+            movie = em.merge(movie);
+        }
 
-    public List<Movie> getAllMovies(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.remove(movie);
     }
 }

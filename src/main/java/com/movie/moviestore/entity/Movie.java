@@ -136,5 +136,9 @@ public class Movie implements Serializable {
     public String toString() {
         return "com.movie.moviestore.entity.Movie[ id=" + id + " ]";
     }
+
+    public void setId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
