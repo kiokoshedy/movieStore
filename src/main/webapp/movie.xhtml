@@ -11,17 +11,18 @@
     </ui:define>
 
     <ui:define name="description">
-        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        <i class="fa fa-video-camera" aria-hidden="true"/>
     </ui:define>
 
     <ui:define name="body">
         <style type="text/css">
             .ui-datatable {
+                font-family: sans-serif;
                 margin-bottom: 25px
             }
 
             .ui-datatable .ui-datatable-header {
-                text-align: right;
+                text-align: justify;
             }
 
             .ui-button-text-only .ui-button-text {
@@ -44,8 +45,11 @@
         </style>
         <h:form id="myform">
 
-            <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" emptyMessage="No movies found" editable="true">
-                <f:facet name="header">
+            <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" 
+                         emptyMessage="No movies found" editable="true" stickyHeader="true" paginator="true" paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         rows="15" rowKey="#{mvs.id}">
+                <f:facet name="header" >
                     <p:outputPanel>
                         <h:outputText value="Search:" />
                         <p:inputText id="globalFilter" onkeyup="PF('mvie').filter()" style="width:200px" placeholder="Enter keyword"/>
@@ -55,15 +59,15 @@
 
                 </f:facet>
                 <p:column filterBy="#{mvs.id}" headerText="ID" ><h:outputText value="#{mvs.id}"/></p:column>
-                <p:column filterBy="#{mvs.name}" headerText="Name" ><h:outputText value="#{mvs.name}"/></p:column>
-                <p:column filterBy="#{mvs.type}" headerText="Type" ><h:outputText value="#{mvs.type}"/></p:column>
-                <p:column filterBy="#{mvs.description}" headerText="Description" ><h:outputText value="#{mvs.description}"/></p:column>
-                <p:column filterBy="#{mvs.production}" headerText="Production" ><h:outputText value="#{mvs.production}"/></p:column>
-                <p:column filterBy="#{mvs.status}" headerText="Status" ><h:outputText value="#{mvs.status}"/></p:column>
+                <p:column filterBy="#{mvs.name}" headerText="NAME" ><h:outputText value="#{mvs.name}"/></p:column>
+                <p:column filterBy="#{mvs.type}" headerText="TYPE" ><h:outputText value="#{mvs.type}"/></p:column>
+                <p:column filterBy="#{mvs.description}" headerText="DESCRIPTION" ><h:outputText value="#{mvs.description}"/></p:column>
+                <p:column filterBy="#{mvs.production}" headerText="PRODUCTION" ><h:outputText value="#{mvs.production}"/></p:column>
+                <p:column filterBy="#{mvs.status}" headerText="STATUS" ><h:outputText value="#{mvs.status}"/></p:column>
 
             </p:dataTable>
             <p:inputTextarea rows="5" cols="30" counter="display" maxlength="100" counterTemplate="{0} characters remaining." autoResize="false" />
-            
+
             <br/>
             <h:outputText id="display" />
             <br/>
