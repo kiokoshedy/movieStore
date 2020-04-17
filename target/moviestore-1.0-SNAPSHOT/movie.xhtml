@@ -48,22 +48,23 @@
             <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" 
                          emptyMessage="No movies found" editable="true" stickyHeader="true" paginator="true" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                         rows="15" rowKey="#{mvs.id}">
+                         rows="15" rowKey="#{mvs.id}" >
                 <f:facet name="header" >
                     <p:outputPanel>
-                        <h:outputText value="Search:" />
+                        <h:outputText value="Search:" style="font-family: cursive; font-size: medium" />
+                        <i class="fa fa-search" aria-hidden="true"/>
                         <p:inputText id="globalFilter" onkeyup="PF('mvie').filter()" style="width:200px" placeholder="Enter keyword"/>
                         <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="fa fa-bars" />
                         <p:columnToggler datasource="mvss" trigger="toggler" />
                     </p:outputPanel>
 
                 </f:facet>
-                <p:column filterBy="#{mvs.id}" headerText="ID" ><h:outputText value="#{mvs.id}"/></p:column>
-                <p:column filterBy="#{mvs.name}" headerText="NAME" ><h:outputText value="#{mvs.name}"/></p:column>
-                <p:column filterBy="#{mvs.type}" headerText="TYPE" ><h:outputText value="#{mvs.type}"/></p:column>
-                <p:column filterBy="#{mvs.description}" headerText="DESCRIPTION" ><h:outputText value="#{mvs.description}"/></p:column>
-                <p:column filterBy="#{mvs.production}" headerText="PRODUCTION" ><h:outputText value="#{mvs.production}"/></p:column>
-                <p:column filterBy="#{mvs.status}" headerText="STATUS" ><h:outputText value="#{mvs.status}"/></p:column>
+                <p:column filterBy="#{mvs.id}" filterStyle="display:none; visibility:hidden;" headerText="ID" ><h:outputText value="#{mvs.id}"/></p:column>
+                <p:column filterBy="#{mvs.name}" filterStyle="display:none; visibility:hidden;" headerText="NAME" ><h:outputText value="#{mvs.name}"/></p:column>
+                <p:column filterBy="#{mvs.type}" filterStyle="display:none; visibility:hidden;" headerText="TYPE" ><h:outputText value="#{mvs.type}"/></p:column>
+                <p:column filterBy="#{mvs.description}" filterStyle="display:none; visibility:hidden;" headerText="DESCRIPTION" ><h:outputText value="#{mvs.description}"/></p:column>
+                <p:column filterBy="#{mvs.production}" filterStyle="display:none; visibility:hidden;" headerText="PRODUCTION" ><h:outputText value="#{mvs.production}"/></p:column>
+                <p:column filterBy="#{mvs.status}" filterStyle="display:none; visibility:hidden;" headerText="STATUS" ><h:outputText value="#{mvs.status}"/></p:column>
 
             </p:dataTable>
             <p:inputTextarea rows="5" cols="30" counter="display" maxlength="100" counterTemplate="{0} characters remaining." autoResize="false" />
