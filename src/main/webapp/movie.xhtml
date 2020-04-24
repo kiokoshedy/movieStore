@@ -47,7 +47,7 @@
 
             <p:dataTable id="mvss" value="#{movieManagedBean.movielist}" widgetVar="mvie" resizableColumns="true" var="mvs" tableStyle="width:auto" 
                          emptyMessage="No movies found" editable="true" stickyHeader="true" paginator="true" paginatorPosition="bottom"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginatorTemplate="{Exporters} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                          rows="15" rowKey="#{mvs.id}" >
                 <f:facet name="header" >
                     <p:outputPanel>
@@ -66,6 +66,18 @@
                 <p:column filterBy="#{mvs.production}" filterStyle="display:none; visibility:hidden;" headerText="PRODUCTION" ><h:outputText value="#{mvs.production}"/></p:column>
                 <p:column filterBy="#{mvs.status}" filterStyle="display:none; visibility:hidden;" headerText="STATUS" ><h:outputText value="#{mvs.status}"/></p:column>
 
+                <f:facet name="{Exporters}">
+                    <h:commandLink >
+                        <p:graphicImage library="images" name="pdf.png" width="30"/>
+                        <p:dataExporter type="pdf" target="mvss" fileName="movies" />
+                    </h:commandLink>
+                    <tbreak/>
+                    <h:commandLink>
+                        <p:graphicImage library="images" name="csv.png" width="30"/>
+                        <p:dataExporter type="csv" target="mvss" fileName="movies" />
+                    </h:commandLink>
+                </f:facet>
+                
             </p:dataTable>
             <p:inputTextarea rows="5" cols="30" counter="display" maxlength="100" counterTemplate="{0} characters remaining." autoResize="false" />
 

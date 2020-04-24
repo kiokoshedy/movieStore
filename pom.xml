@@ -18,6 +18,16 @@
     
     <dependencies>
         <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -107,6 +117,11 @@
         </plugins>
     </build>
     <repositories>
+        <repository>
+            <id>Central Maven repository</id>
+            <name>Central Maven repository https</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
         <repository>
             <id>unknown-jars-temp-repo</id>
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
