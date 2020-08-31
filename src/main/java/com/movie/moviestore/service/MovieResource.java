@@ -7,6 +7,9 @@ package com.movie.moviestore.service;
 
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.sessionbean.MovieSessionBean;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.persistence.EntityManager;
@@ -21,6 +24,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
@@ -47,22 +51,22 @@ public class MovieResource {
     
     @GET
     @Path("{id}")
-    public Movie getMovie (@PathParam("id") int id) {
-        Movie movie = msb.getById(id);
+    public Movie getMovie (@PathParam("movieId") String movieid) {
+        Movie movie = msb.getByMovieId(movieid);
         return movie;
         
     }
     
     @DELETE
     @Path("{id}")
-    public void deleteMovie(@PathParam("id") int id) {
-        Movie movie = msb.getById(id);
-        msb.deleteMovie(movie);
+    public void deleteMovie(@PathParam("movieId") String movieid) {
+        Movie movie = msb.getByMovieId(movieid);
+        msb.deleteMovie((Movie) movie);
                 
     }
     @PUT
     @Path("{id}")
-    public Response updateMovie (@PathParam("id") int id, Movie movie) {
+    public Response updateMovie (@PathParam("id") Integer id, Movie movie) {
         Movie update = msb.getById(id);
         
         update.setName(movie.getName());
@@ -70,6 +74,8 @@ public class MovieResource {
         update.setProduction(movie.getProduction());
         update.setType(movie.getType());
         update.setStatus(movie.getStatus());
+        update.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
+        update.setDatecreated(Date.from(Instant.now()));
         
         msb.updateMovie(update);
         
@@ -78,6 +84,8 @@ public class MovieResource {
     
     @POST
     public Response addMovies(Movie movie) {
+        // movie.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
+        // movie.setDate(Date.from(Instant.MIN));
         msb.addMovie(movie);
         
         return Response.ok().build();

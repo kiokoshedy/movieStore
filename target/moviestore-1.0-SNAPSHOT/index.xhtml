@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/WEB-INF/templates/template.xhtml">
-
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name="head">
+        <title>Home</title>
+    </ui:define>
     <ui:define name="title">
         Home
     </ui:define>
 
     <ui:define name="description">
-        
+
     </ui:define>
 
     <ui:define name="body">
         Anonymous Movie Shop. All under one management.
     </ui:define>
+    <h:panelGroup>
+        <h:form>
+            <h:commandButton value="logout" action="#{authentication.logout()}" />
+        </h:form>
+    </h:panelGroup>
 
 </ui:composition>

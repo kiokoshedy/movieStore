@@ -1,5 +1,6 @@
 package com.movie.moviestore.entity;
 
+import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -11,7 +12,9 @@ public abstract class Movie_ {
 	public static volatile SingularAttribute<Movie, String> production;
 	public static volatile SingularAttribute<Movie, String> name;
 	public static volatile SingularAttribute<Movie, String> description;
+	public static volatile SingularAttribute<Movie, String> movieId;
 	public static volatile SingularAttribute<Movie, Integer> id;
+	public static volatile SingularAttribute<Movie, Date> datecreated;
 	public static volatile SingularAttribute<Movie, String> type;
 	public static volatile SingularAttribute<Movie, String> status;
 

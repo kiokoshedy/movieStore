@@ -6,6 +6,7 @@
 package com.movie.moviestore.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m")
     , @NamedQuery(name = "Movie.findById", query = "SELECT m FROM Movie m WHERE m.id = :id")
+    , @NamedQuery(name = "Movie.findByMovieId", query = "SELECT m FROM Movie m WHERE m.movieId = :movieId")
     , @NamedQuery(name = "Movie.findByName", query = "SELECT m FROM Movie m WHERE m.name = :name")
     , @NamedQuery(name = "Movie.findByType", query = "SELECT m FROM Movie m WHERE m.type = :type")
     , @NamedQuery(name = "Movie.findByDescription", query = "SELECT m FROM Movie m WHERE m.description = :description")
@@ -56,10 +60,25 @@ public class Movie implements Serializable {
     @Size(max = 20)
     @Column(name = "status")
     private String status;
+    
+    @Column(name = "datecreated")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datecreated;
+    @Size(max = 50)
+    @Column(name = "movieId")
+    private String movieId;
    
     public Movie() {
     }
 
+    public Date getDatecreated() {
+        return datecreated;
+    }
+
+    public void setDatecreated(Date datecreated) {
+        this.datecreated = datecreated;
+    }
+    
     public Movie(Integer id) {
         this.id = id;
     }
@@ -112,6 +131,16 @@ public class Movie implements Serializable {
         this.status = status;
     }
 
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -135,10 +164,6 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "com.movie.moviestore.entity.Movie[ id=" + id + " ]";
-    }
-
-    public void setId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
