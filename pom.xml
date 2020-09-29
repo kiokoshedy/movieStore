@@ -47,7 +47,7 @@
             <version>4.3.1.Final</version>
             <scope>provided</scope>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>com.github.adminfaces</groupId>
             <artifactId>admin-template</artifactId>
             <version>1.0.0-RC20</version>
@@ -60,10 +60,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>3.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces.extensions</groupId>

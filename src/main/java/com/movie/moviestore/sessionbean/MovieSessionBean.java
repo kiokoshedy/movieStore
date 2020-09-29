@@ -93,7 +93,7 @@ public class MovieSessionBean {
 
         try {
             movie.setDatecreated(Date.from(Instant.now()));
-            movie.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
+            movie.setMovieId(RandomStringUtils.randomAlphanumeric(10));
             em.persist(movie);
         } catch (Exception e) {
             LOG.log(Level.SEVERE, e.getMessage(), e);

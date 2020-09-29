@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 3, 2016, 3:21:11 PM
+    Author     : Francis
+*/
+body {
+    background-color: #efefef;
+    color: #5b5b5b;
+    text-shadow: 0 1px 0 #efefef;
+	display: block;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.ui-datatable {
+    display: table;
+}
+
+.ui-datatable table {
+    table-layout: auto !important;
+}
+.foo td {
+    vertical-align: top;
+}
+#footer {
+    text-align: center;
+    position : absolute;
+    bottom : 0;
+    height : 40px;
+    margin-top : 40px;
+}

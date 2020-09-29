@@ -74,7 +74,7 @@ public class MovieResource {
         update.setProduction(movie.getProduction());
         update.setType(movie.getType());
         update.setStatus(movie.getStatus());
-        update.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
+        update.setMovieId(RandomStringUtils.randomAlphanumeric(10));
         update.setDatecreated(Date.from(Instant.now()));
         
         msb.updateMovie(update);

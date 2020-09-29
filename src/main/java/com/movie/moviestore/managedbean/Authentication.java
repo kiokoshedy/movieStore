@@ -8,46 +8,63 @@ package com.movie.moviestore.managedbean;
 import com.github.adminfaces.template.session.AdminSession;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import org.omnifaces.util.Faces;
-import org.primefaces.PrimeFaces;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author DATA INTEGRATED
  */
 @Named(value = "authentication")
-@RequestScoped
+@SessionScoped
 public class Authentication implements Serializable {
-    private String username;
-     
-    private String password;
+
+    private String username = "username";
+    private String password = "password";
     
+    private static final Logger LOG = Logger.getLogger(Authentication.class.getName());
+
     @Inject
     AdminSession as;
- 
-    public String getUsername() {
-        return username;
+
+    public void login() throws IOException {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+
+        try {
+            request.login(username, password);
+            as.setIsLoggedIn(Boolean.TRUE);
+            as.setUserRedirected(Boolean.FALSE);
+            setPassword("");
+            String url = String.format("%s/%s", externalContext.getRequestContextPath(), "/index.xhtml");
+            System.out.println("ok " + url);
+            externalContext.redirect(url);
+        } catch (ServletException e) {
+            // Handle unknown username/password in request.login().
+            System.out.println(e.getMessage());
+            LOG.log(Level.SEVERE, e.getMessage(), e);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Login failed"));
+        }
     }
- 
-    public void setUsername(String username) {
-        this.username = username;
+
+    public void logout() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.invalidateSession();
+        String url = String.format("%s/%s", externalContext.getRequestContextPath(), "login.xhtml");
+        externalContext.redirect(url);
     }
- 
-    public String getPassword() {
-        return password;
-    }
- 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-   
-    public void login() throws IOException{
+
+    /*public void login() throws IOException{
         FacesMessage message = null;
         boolean loggedIn = false;
          
@@ -62,12 +79,28 @@ public class Authentication implements Serializable {
         
         FacesContext.getCurrentInstance().addMessage(null, message);
         PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-    }
+    }*/
     
     @PostConstruct
     public void init() {
         as.setIsLoggedIn(Boolean.FALSE);
         as.setUserRedirected(Boolean.TRUE);
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }
-   

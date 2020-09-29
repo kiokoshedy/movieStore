@@ -139,7 +139,7 @@ public class MovieManagedBean implements Serializable {
             mvie.setProduction(production);
             mvie.setStatus(status);
             mvie.setType(type);
-            mvie.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
+            mvie.setMovieId(RandomStringUtils.randomAlphanumeric(10));
             mvie.setDatecreated(Date.from(Instant.now()));
 
             LOG.info(name);
