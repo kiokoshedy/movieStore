@@ -9,6 +9,7 @@ import com.lowagie.text.BadElementException;
 import com.lowagie.text.DocumentException;
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.sessionbean.MovieSessionBean;
+import com.movie.moviestore.utils.AppConstants;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.Instant;
@@ -134,12 +135,14 @@ public class MovieManagedBean implements Serializable {
     public void createMovie() {
         try {
             Movie mvie = new Movie();
+            String MovieId = AppConstants.TAG + RandomStringUtils.randomAlphanumeric(6);
+            
             mvie.setDescription(description);
             mvie.setName(name);
             mvie.setProduction(production);
             mvie.setStatus(status);
             mvie.setType(type);
-            mvie.setMovieId(RandomStringUtils.randomAlphanumeric(10));
+            mvie.setMovieId(MovieId);
             mvie.setDatecreated(Date.from(Instant.now()));
 
             LOG.info(name);
@@ -147,6 +150,7 @@ public class MovieManagedBean implements Serializable {
             LOG.info(production);
             LOG.info(status);
             LOG.info(type);
+            LOG.info(MovieId);
 
             Response mv = msb.addMovie(mvie);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "New Movie added!"));

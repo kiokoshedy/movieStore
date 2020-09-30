@@ -1,3 +1,4 @@
+com\movie\moviestore\utils\AppConstants.class
 com\movie\moviestore\managedbean\Authentication.class
 org\netbeans\rest\application\config\ApplicationConfig.class
 com\movie\moviestore\sessionbean\MovieSessionBean.class

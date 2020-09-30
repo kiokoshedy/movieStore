@@ -7,6 +7,7 @@ package com.movie.moviestore.sessionbean;
 
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.managedbean.MovieManagedBean;
+import com.movie.moviestore.utils.AppConstants;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
@@ -92,8 +93,9 @@ public class MovieSessionBean {
         }
 
         try {
+            movie.setMovieId(AppConstants.TAG + RandomStringUtils.randomAlphanumeric(6));
             movie.setDatecreated(Date.from(Instant.now()));
-            movie.setMovieId(RandomStringUtils.randomAlphanumeric(10));
+            //movie.setMovieId(RandomStringUtils.randomAlphanumeric(10));
             em.persist(movie);
         } catch (Exception e) {
             LOG.log(Level.SEVERE, e.getMessage(), e);

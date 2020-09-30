@@ -7,6 +7,7 @@ package com.movie.moviestore.service;
 
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.sessionbean.MovieSessionBean;
+import com.movie.moviestore.utils.AppConstants;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
@@ -86,6 +87,7 @@ public class MovieResource {
     public Response addMovies(Movie movie) {
         // movie.setMovieId(RandomStringUtils.randomAlphabetic(6).toUpperCase());
         // movie.setDate(Date.from(Instant.MIN));
+        //movie.setMovieId(AppConstants.TAG + RandomStringUtils.randomAlphanumeric(10));
         msb.addMovie(movie);
         
         return Response.ok().build();
