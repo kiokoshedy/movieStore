@@ -7,9 +7,7 @@ package com.movie.moviestore.service;
 
 import com.movie.moviestore.entity.Movie;
 import com.movie.moviestore.sessionbean.MovieSessionBean;
-import com.movie.moviestore.utils.AppConstants;
 import java.time.Instant;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;

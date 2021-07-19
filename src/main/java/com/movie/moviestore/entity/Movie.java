@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -45,18 +46,28 @@ public class Movie implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
+    @Null(message = "Name cannot be null")
     @Size(max = 50)
     @Column(name = "name")
     private String name;
+    
+    @Null(message = "Type cannot be null")
     @Size(max = 50)
     @Column(name = "type")
     private String type;
+    
+    @Null(message = "Description cannot be null")
     @Size(max = 50)
     @Column(name = "description")
     private String description;
+    
+    @Null(message = "Production cannot be null")
     @Size(max = 50)
     @Column(name = "production")
     private String production;
+    
+    @Null(message = "Status cannot be null")
     @Size(max = 20)
     @Column(name = "status")
     private String status;
@@ -150,7 +161,7 @@ public class Movie implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        
         if (!(object instanceof Movie)) {
             return false;
         }

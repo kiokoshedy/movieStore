@@ -19,14 +19,10 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.swing.text.Document;
-import javax.ws.rs.core.Response;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -45,7 +41,13 @@ import org.primefaces.event.SelectEvent;
 @ViewScoped
 public class MovieManagedBean implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     private List<Movie> movielist;
+    
     @EJB
     private MovieSessionBean msb;
 
@@ -135,7 +137,7 @@ public class MovieManagedBean implements Serializable {
     public void createMovie() {
         try {
             Movie mvie = new Movie();
-            String MovieId = AppConstants.TAG + RandomStringUtils.randomAlphanumeric(6);
+            String MovieId = AppConstants.TAG + RandomStringUtils.randomAlphanumeric(10);
             
             mvie.setDescription(description);
             mvie.setName(name);
@@ -152,7 +154,7 @@ public class MovieManagedBean implements Serializable {
             LOG.info(type);
             LOG.info(MovieId);
 
-            Response mv = msb.addMovie(mvie);
+            msb.addMovie(mvie);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "New Movie added!"));
 
         } catch (Exception e) {
@@ -208,9 +210,6 @@ public class MovieManagedBean implements Serializable {
     }
 
     public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
-        Document pdf = (Document) document;
-
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
     }
 
     public Integer getYear() {

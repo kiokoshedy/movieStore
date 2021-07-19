@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.inject.Named;
@@ -24,10 +25,15 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author DATA INTEGRATED
  */
+@ManagedBean
 @Named(value = "authentication")
 @SessionScoped
 public class Authentication implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String username = "username";
     private String password = "password";
     
@@ -45,7 +51,8 @@ public class Authentication implements Serializable {
             request.login(username, password);
             as.setIsLoggedIn(Boolean.TRUE);
             as.setUserRedirected(Boolean.FALSE);
-            setPassword("");
+            setUsername(getUsername());
+            setPassword(getPassword());
             String url = String.format("%s/%s", externalContext.getRequestContextPath(), "/index.xhtml");
             System.out.println("ok " + url);
             externalContext.redirect(url);
@@ -53,7 +60,7 @@ public class Authentication implements Serializable {
             // Handle unknown username/password in request.login().
             System.out.println(e.getMessage());
             LOG.log(Level.SEVERE, e.getMessage(), e);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Login failed"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning! Login failed", ""));
         }
     }
 

@@ -6,10 +6,8 @@
 package com.movie.moviestore.sessionbean;
 
 import com.movie.moviestore.entity.Movie;
-import com.movie.moviestore.managedbean.MovieManagedBean;
 import com.movie.moviestore.utils.AppConstants;
 import java.time.Instant;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
