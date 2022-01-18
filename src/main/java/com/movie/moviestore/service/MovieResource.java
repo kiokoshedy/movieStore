@@ -27,7 +27,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 
 @Path("/store")
@@ -50,16 +50,16 @@ public class MovieResource {
     
     @GET
     @Path("{id}")
-    public Movie getMovie (@PathParam("movieId") String movieid) {
-        Movie movie = msb.getByMovieId(movieid);
+    public Movie getMovie (@PathParam("movieId") String movieId) {
+        Movie movie = msb.getByMovieId(movieId);
         return movie;
         
     }
     
     @DELETE
     @Path("{id}")
-    public void deleteMovie(@PathParam("movieId") String movieid) {
-        Movie movie = msb.getByMovieId(movieid);
+    public void deleteMovie(@PathParam("movieId") String movieId) {
+        Movie movie = msb.getByMovieId(movieId);
         msb.deleteMovie((Movie) movie);
                 
     }

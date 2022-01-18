@@ -21,7 +21,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 @Stateless
 public class MovieSessionBean {

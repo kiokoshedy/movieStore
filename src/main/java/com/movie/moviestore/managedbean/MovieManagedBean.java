@@ -35,7 +35,7 @@ import org.primefaces.event.SelectEvent;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 @Named(value = "movieManagedBean")
 @ViewScoped

@@ -7,7 +7,7 @@ package com.movie.moviestore.utils;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 public interface AppConstants {
     

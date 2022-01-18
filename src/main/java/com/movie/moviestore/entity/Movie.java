@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 @Entity
 @Table(name = "movie")

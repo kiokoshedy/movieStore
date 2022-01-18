@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  *
- * @author DATA INTEGRATED
+ * @author kioko
  */
 @ManagedBean
 @Named(value = "authentication")
