@@ -62,11 +62,11 @@ public class MovieManagedBean implements Serializable {
     private String production;
     private String status;
     private String type;
-    private String movieid;
+    private String movieId;
 
-    private String selectedoption;
+    private String selectedOption;
 
-    private String filtercolumn;
+    private String filterColumn;
     private Boolean detail;
 
     private static final Logger LOG = Logger.getLogger(MovieManagedBean.class.getName());
@@ -78,7 +78,7 @@ public class MovieManagedBean implements Serializable {
     }
 
     public void onItemSelect(SelectEvent event) {
-        switch (selectedoption) {
+        switch (selectedOption) {
             case "selectColumn":
                 detail = false;
             case "name":
@@ -97,29 +97,29 @@ public class MovieManagedBean implements Serializable {
     }
 
     public void filter() throws IOException {
-        if (getSelectedoption().equalsIgnoreCase("name")) {
+        if (getSelectedOption().equalsIgnoreCase("name")) {
             getMovielist().clear();
-            getMovielist().add(msb.getByName(getFiltercolumn()));
-        } else if (getSelectedoption().equalsIgnoreCase("production")) {
+            getMovielist().add(msb.getByName(getFilterColumn()));
+        } else if (getSelectedOption().equalsIgnoreCase("production")) {
             getMovielist().clear();
-            getMovielist().addAll(msb.getByProduction(getFiltercolumn()));
-        } else if (getSelectedoption().equalsIgnoreCase("status")) {
+            getMovielist().addAll(msb.getByProduction(getFilterColumn()));
+        } else if (getSelectedOption().equalsIgnoreCase("status")) {
             getMovielist().clear();
-            getMovielist().addAll(msb.getByStatus(getFiltercolumn()));
-        } else if (getSelectedoption().equalsIgnoreCase("movieid")) {
+            getMovielist().addAll(msb.getByStatus(getFilterColumn()));
+        } else if (getSelectedOption().equalsIgnoreCase("movieid")) {
             getMovielist().clear();
-            getMovielist().add(msb.getByMovieId(getFiltercolumn()));
-        }else if(getSelectedoption().equalsIgnoreCase("type")) {
+            getMovielist().add(msb.getByMovieId(getFilterColumn()));
+        }else if(getSelectedOption().equalsIgnoreCase("type")) {
             getMovielist().clear();
-            getMovielist().addAll(msb.getByType(getFiltercolumn()));
+            getMovielist().addAll(msb.getByType(getFilterColumn()));
         }
     }
 
     public void refresh() {
         detail = false;
-        setFiltercolumn(null);
-        setSelectedoption(null);
-        setMovieid(null);
+        setFilterColumn(null);
+        setSelectedOption(null);
+        setMovieId(null);
         setStatus(null);
         setProduction(null);
         setName(null);
@@ -139,7 +139,7 @@ public class MovieManagedBean implements Serializable {
             mvie.setStatus(status);
             mvie.setType(type);
             mvie.setMovieId(MovieId);
-            mvie.setDatecreated(Date.from(Instant.now()));
+            mvie.setDateCreated(Date.from(Instant.now()));
 
             LOG.info(name);
             LOG.info(description);
@@ -278,20 +278,20 @@ public class MovieManagedBean implements Serializable {
         this.type = type;
     }
 
-    public String getSelectedoption() {
-        return selectedoption;
+    public String getSelectedOption() {
+        return selectedOption;
     }
 
-    public void setSelectedoption(String selectedoption) {
-        this.selectedoption = selectedoption;
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
     }
 
-    public String getFiltercolumn() {
-        return filtercolumn;
+    public String getFilterColumn() {
+        return filterColumn;
     }
 
-    public void setFiltercolumn(String filtercolumn) {
-        this.filtercolumn = filtercolumn;
+    public void setFilterColumn(String filterColumn) {
+        this.filterColumn = filterColumn;
     }
 
     public Boolean getDetail() {
@@ -302,12 +302,12 @@ public class MovieManagedBean implements Serializable {
         this.detail = detail;
     }
 
-    public String getMovieid() {
-        return movieid;
+    public String getMovieId() {
+        return movieId;
     }
 
-    public void setMovieid(String movieid) {
-        this.movieid = movieid;
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
 }

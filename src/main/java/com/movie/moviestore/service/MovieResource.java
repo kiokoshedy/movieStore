@@ -50,17 +50,16 @@ public class MovieResource {
     
     @GET
     @Path("{id}")
-    public Movie getMovie (@PathParam("movieId") String movieId) {
-        Movie movie = msb.getByMovieId(movieId);
-        return movie;
+    public Movie getMovie ( String movieId) {
+        return msb.getByMovieId(movieId);
         
     }
     
     @DELETE
     @Path("{id}")
-    public void deleteMovie(@PathParam("movieId") String movieId) {
+    public void deleteMovie( String movieId) {
         Movie movie = msb.getByMovieId(movieId);
-        msb.deleteMovie((Movie) movie);
+        msb.deleteMovie(movie);
                 
     }
     @PUT
@@ -74,7 +73,7 @@ public class MovieResource {
         update.setType(movie.getType());
         update.setStatus(movie.getStatus());
         update.setMovieId(RandomStringUtils.randomAlphanumeric(10));
-        update.setDatecreated(Date.from(Instant.now()));
+        update.setDateCreated(Date.from(Instant.now()));
         
         msb.updateMovie(update);
         

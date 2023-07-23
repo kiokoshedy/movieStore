@@ -72,9 +72,9 @@ public class Movie implements Serializable {
     @Column(name = "status")
     private String status;
     
-    @Column(name = "datecreated")
+    @Column(name = "dateCreated")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date datecreated;
+    private Date dateCreated;
     @Size(max = 50)
     @Column(name = "movieId")
     private String movieId;
@@ -82,12 +82,12 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Date getDatecreated() {
-        return datecreated;
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
     
     public Movie(Integer id) {
