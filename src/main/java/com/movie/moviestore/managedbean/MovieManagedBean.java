@@ -79,21 +79,15 @@ public class MovieManagedBean implements Serializable {
 
     public void onItemSelect(SelectEvent event) {
         switch (selectedoption) {
-            case "selectcolumn":
+            case "selectColumn":
                 detail = false;
             case "name":
                 detail = true;
                 break;
             case "status":
-                detail = true;
-                break;
             case "production":
-                detail = true;
-                break;
             case "type":
-                detail = true;
-                break;
-            case "movieid":
+            case "movieId":
                 detail = true;
                 break;
             default:
